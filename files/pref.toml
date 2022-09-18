@@ -296,11 +296,11 @@ target = "/render?path=templates/test.tpl"
 
 [[aliases]]
 uri = "/min"
-target = "/sub?target=auto&config=https%3A%2F%2Ffastly.jsdelivr.net%2Fgh%2Fpzcn%2FClash-profiles%2Fmain%2Fminimal.ini"
+target = "/sub?target=clash&config=https%3A%2F%2Ffastly.jsdelivr.net%2Fgh%2Fpzcn%2FClash-profiles%2Fmain%2Fminimal.ini"
 
 [[aliases]]
 uri = "/api"
-target = "/sub?target=auto&config=https%3A%2F%2Ffastly.jsdelivr.net%2Fgh%2Fpzcn%2FClash-profiles%2Fmain%2Fcountry.ini"
+target = "/sub?target=clash&config=https%3A%2F%2Ffastly.jsdelivr.net%2Fgh%2Fpzcn%2FClash-profiles%2Fmain%2Fcountry.ini"
 
 #[[tasks]]
 #name = "tick"
