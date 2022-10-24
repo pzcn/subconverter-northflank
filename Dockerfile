@@ -1,9 +1,20 @@
-# you can save the files you want to replace to a folder, then copy it into to the docker
-# using the latest build of the official docker
 FROM tindy2013/subconverter:latest
-# assume your files are inside files/
-# subconverter folder is located in /base/, which has the same structure as the base/ folder in the repository
 COPY files/ /base/
-# expose internal port
 EXPOSE 25500
-# notice that you still need to use '-p 25500:25500' when starting the docker to forward this port
+
+# ---- Dependencies ----
+FROM node:12-alpine AS dependencies
+WORKDIR /app
+COPY package.json ./
+RUN yarn install
+
+# ---- Build ----
+FROM dependencies AS build
+WORKDIR /app
+COPY . /app
+RUN yarn build
+
+FROM nginx:1.16-alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD [ "nginx", "-g", "daemon off;" ]
